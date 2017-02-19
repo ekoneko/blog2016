@@ -1,0 +1,11 @@
+.ComponentsPostContainer {
+  padding: 20px;
+  .menubar {
+    padding: 0 0 10px 10px;
+  }
+}
+.ComponentsPostList {
+  tr:first-child > td {
+    border-top: none;
+  }
+}

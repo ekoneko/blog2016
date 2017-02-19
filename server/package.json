@@ -1,0 +1,31 @@
+{
+  "name": "kaze-blog2016_server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node --harmony_async_await code/app.js",
+    "test": "./node_modules/mocha/bin/mocha --harmony_async_await"
+  },
+  "dependencies": {
+    "argv": "^0.0.2",
+    "co-body": "^4.2.0",
+    "co-views": "^2.1.0",
+    "dotenv": "^4.0.0",
+    "koa": "^2.0.0",
+    "koa-compress": "^2.0.0",
+    "koa-logger": "^2.0.1",
+    "koa-route": "^2.4.2",
+    "koa-router": "^7.1.0",
+    "koa-static": "^3.0.0",
+    "mysql": "^2.12.0",
+    "query-string": "^4.3.1",
+    "redis": "^2.6.5",
+    "require-dir": "^0.3.1",
+    "sequelize": "^3.29.0",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "supertest": "^0.12.1"
+  }
+}

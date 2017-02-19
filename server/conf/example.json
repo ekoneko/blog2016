@@ -1,0 +1,17 @@
+{
+  "apps" : [{
+    "script"    : "code/app.js",
+    "watch"     : true,
+    "ignore_watch": ["logs", ".idea", "node_modules", ".DS_Store", ".git"],
+    "name"      : "kaze-blog2016_server",
+    "instances" : 1,
+    "exec_mode" : "fork",
+    "node_args": "--harmony_async_await",
+    "env": {
+      "PORT": "3000"
+    },
+    "restart_delay" : "3000",
+    "autorestart": false,
+    "combine_logs"  : false
+  }]
+}
