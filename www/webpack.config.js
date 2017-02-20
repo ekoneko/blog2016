@@ -40,5 +40,8 @@ module.exports = {
     }),
     extractCSS
   ],
+  node: {
+    fs: "empty"
+  },
   devtool: process.env.DEV ? 'inline-source-map' : ''
 }
