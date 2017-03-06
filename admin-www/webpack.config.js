@@ -14,24 +14,29 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    root: path.join(__dirname, 'code'),
-    extensions: ["", ".js", ".jsx"]
+    modules: [path.join(__dirname, 'code'), 'node_modules'],
+    extensions: [".js", ".jsx"],
   },
   module: {
-    loaders: [
+    rules: [
       {
-        loader: 'babel',
+        loader: 'babel-loader',
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets: ['react', 'es2015', 'es2016', 'stage-0']
+          presets: [
+            'react',
+            ['es2015', {modules: false}],
+            'es2016',
+            'stage-0'
+          ]
         }
       }, {
         test: /\.s?css$/i,
-        loader: extractCSS.extract(['css', 'sass'])
+        loader: extractCSS.extract(['css-loader', 'sass-loader'])
       }, {
         test: /\.html$/,
-        loader: 'html',
+        loader: 'html-loader',
         query: {
           minimize: true
         }
