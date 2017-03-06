@@ -27,4 +27,6 @@ module.exports = function () {
   return router.routes()
 };
 
-module.exports.allowedMethods = router.allowedMethods;
+module.exports.allowedMethods = function() {
+  return router.allowedMethods();
+};
