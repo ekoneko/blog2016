@@ -2,15 +2,16 @@ import Handlebars from 'handlebars'
 import indexTemplate from './Index.html'
 import itemTemplate from './Item.html'
 import moment from 'moment'
+import {request as requestPost, generatorContent, getIdByUrl} from '../Post/Post'
 
 const SIZE = 20;
-var offset = 0;
-var noMore = false;
-var listHtml = '';
+let offset = 0;
+let noMore = false;
+let listHtml = '';
 
 function request() {
   const query = `offset=${offset}&size=${SIZE}`;
-  var total;
+  let total;
   return fetch(`api/post?${query}`, {
     method: 'GET',
   }).then(res => {
@@ -53,6 +54,22 @@ export default function (container, scroller) {
   scroller.bindNextPage(() => {
     if (!noMore) {
       return request().then(loadItem)
+    }
+  })
+
+  document.body.addEventListener('click', e => {
+    if (e.metaKey) return; // press cmd key to open new tab
+    if (e.target.classList.contains('more')) {
+      const id = getIdByUrl(e.target.href);
+      if (!id) return;
+      requestPost(id).then(res => {
+        res.createdAt = moment(res.createdAt).format('YYYY-MM-DD');
+        e.target.parentNode.innerHTML = generatorContent(res);
+        scroller.refresh();
+      });
+      e.stopPropagation();
+      e.preventDefault()
+      //
     }
   })
 }
